@@ -1,0 +1,23 @@
+[project]
+name = "terminal-dungeon"
+version = "1.0.0"
+description = "A tiny turn-based roguelike for the terminal: procedural dungeons, field of view, BFS monster AI"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+
+[project.scripts]
+dungeon = "dungeon.cli:main"
+
+[tool.pytest.ini_options]
+pythonpath = ["src", "tests"]
+testpaths = ["tests"]
+addopts = "-q"
+
+[tool.coverage.run]
+source = ["dungeon"]
+branch = true
+omit = ["*/__main__.py"]
+
+[tool.coverage.report]
+fail_under = 85
+show_missing = true
