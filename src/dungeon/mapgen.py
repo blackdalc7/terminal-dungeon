@@ -12,6 +12,7 @@ Pos = tuple[int, int]  # (x, y)
 
 @dataclass(frozen=True)
 class Room:
+    """A rectangular room on the map."""
     x: int
     y: int
     w: int
@@ -34,6 +35,7 @@ class Room:
 
 
 class Map:
+    """The tile grid of one floor and the rooms carved into it."""
     def __init__(self, width: int, height: int):
         self.width, self.height = width, height
         self.tiles = [[WALL] * width for _ in range(height)]

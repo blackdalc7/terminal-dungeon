@@ -17,6 +17,7 @@ HELP = "move: w a s d (+Enter, or type several like 'ddd')   p: potion   .: wait
 
 
 def play(game: Game, read=None, write=print, colour: bool = True, clear: bool = True) -> int:
+    """Run the game loop: draw, read a command, apply it, until the game ends or the player quits."""
     read = read or input
     while not game.over:
         if clear:

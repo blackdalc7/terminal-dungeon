@@ -25,6 +25,7 @@ DIRECTIONS = {"w": (0, -1), "a": (-1, 0), "s": (0, 1), "d": (1, 0)}
 
 @dataclass
 class Entity:
+    """The player or a monster."""
     name: str
     symbol: str
     pos: Pos
@@ -41,6 +42,7 @@ class Entity:
 
 @dataclass
 class Item:
+    """Something lying on the floor that the player can pick up."""
     kind: str  # "potion", "gold", "sword", "shield"
     pos: Pos
     value: int = 0
@@ -52,6 +54,7 @@ class Item:
 
 @dataclass
 class Game:
+    """The whole game state, and the rules that change it each turn."""
     rng: random.Random
     depth: int = 1
     player: Entity = field(default_factory=lambda: Entity("you", "@", (0, 0), 20, 20, 4, 1))
@@ -77,6 +80,7 @@ class Game:
         return game
 
     def new_floor(self) -> None:
+        """Generate a floor, put the player in the first room and scatter monsters and items."""
         self.map = generate(rng=self.rng)
         rooms = self.map.rooms
         self.player.pos = rooms[0].center
@@ -223,6 +227,7 @@ class Game:
     # ---- monsters --------------------------------------------------------
 
     def monsters_act(self) -> None:
+        """Visible monsters attack when adjacent, otherwise step towards the player along a BFS path."""
         self.monsters = [m for m in self.monsters if m.alive]
         occupied = {m.pos for m in self.monsters}
         for m in self.monsters:

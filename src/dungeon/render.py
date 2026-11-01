@@ -19,6 +19,7 @@ RESET = "\033[0m"
 
 
 def draw(game: Game, colour: bool = True) -> str:
+    """Render the map (remembered tiles dimmed), entities, status bar and recent messages."""
     m = game.map
     entities = {i.pos: i.symbol for i in game.items}
     entities.update({mon.pos: mon.symbol for mon in game.monsters if mon.alive})

@@ -1,5 +1,7 @@
 # 🗡️ Terminal Dungeon
 
+[![CI](https://github.com/blackdalc7/terminal-dungeon/actions/workflows/ci.yml/badge.svg)](https://github.com/blackdalc7/terminal-dungeon/actions/workflows/ci.yml)
+
 A tiny turn-based roguelike that runs in your terminal. Every game generates a new dungeon of rooms and corridors. You explore with limited vision, fight monsters that hunt you down with pathfinding, collect gold and gear, and try to get through all 5 floors alive.
 
 It's written in plain Python with **no dependencies**, and it was my excuse to implement some classic algorithms properly: procedural generation, Bresenham lines, field of view and breadth-first search.
